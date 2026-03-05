@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nety — Gizlilik Politikası</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #06080F;
+            color: #E2E8F0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Ambient background ── */
+        .bg-glow {
+            position: fixed;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Header ── */
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 24px 40px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(16, 185, 129, 0.3);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* ── Container ── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        /* ── Cards ── */
+        .section {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(20px);
+            transition: border-color 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .emoji {
+            font-size: 22px;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #CBD5E1;
+            margin: 20px 0 8px;
+        }
+
+        .section p,
+        .section li {
+            color: #94A3B8;
+            font-size: 14.5px;
+            line-height: 1.8;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        /* ── Highlight box ── */
+        .highlight {
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .highlight p {
+            color: #6EE7B7 !important;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ── Footer ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 24px 60px;
+            border-top: 1px solid rgba(148, 163, 184, 0.06);
+        }
+
+        footer p {
+            color: #475569;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        footer a {
+            color: #10B981;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            header { padding: 52px 20px 32px; }
+            .container { padding: 0 16px 80px; }
+            .section { padding: 24px 20px; border-radius: 16px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">N</div>
+            <span class="logo-text">Nety</span>
+        </div>
+        <h1>Gizlilik Politikası</h1>
+        <p>Son güncelleme: 6 Mart 2026</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. Giriş -->
+        <div class="section">
+            <h2><span class="emoji">👋</span> Giriş</h2>
+            <p>
+                Nety ("biz", "uygulama"), öğrencilerin YKS sınavına hazırlanmasına yardımcı olan bir mobil uygulamadır. 
+                Bu gizlilik politikası, uygulamamızı kullanırken kişisel verilerinizin nasıl toplandığını, 
+                kullanıldığını ve korunduğunu açıklar. Gizliliğinize büyük önem veriyoruz.
+            </p>
+        </div>
+
+        <!-- 2. Toplanan Veriler -->
+        <div class="section">
+            <h2><span class="emoji">📋</span> Toplanan Veriler</h2>
+            
+            <h3>Hesap Bilgileri</h3>
+            <ul>
+                <li>Ad ve soyad</li>
+                <li>E-posta adresi (Google veya Apple ile giriş)</li>
+                <li>Profil fotoğrafı (opsiyonel)</li>
+            </ul>
+
+            <h3>Eğitim Bilgileri</h3>
+            <ul>
+                <li>Sınıf düzeyi ve alan bilgisi (SAY/EA/SOZ/DİL)</li>
+                <li>Hedef üniversite ve bölüm</li>
+                <li>Test sonuçları (net, doğru/yanlış sayıları)</li>
+                <li>Çözülen sorular ve hata kayıtları</li>
+            </ul>
+
+            <h3>Cihaz Bilgileri</h3>
+            <ul>
+                <li>Cihaz türü ve işletim sistemi versiyonu</li>
+                <li>Uygulama kullanım istatistikleri</li>
+            </ul>
+
+            <div class="highlight">
+                <p>🔒 Konum bilginizi, rehberinizi, kameranızı veya mikrofonunuzu toplamıyoruz.</p>
+            </div>
+        </div>
+
+        <!-- 3. Verilerin Kullanımı -->
+        <div class="section">
+            <h2><span class="emoji">⚙️</span> Verilerin Kullanım Amaçları</h2>
+            <ul>
+                <li>Kişiselleştirilmiş soru önerileri ve yapay zeka destekli soru üretimi</li>
+                <li>Sınav sonuçlarınıza dayalı zayıf alan analizi</li>
+                <li>Liderlik tablosu ve turnuva sıralamaları</li>
+                <li>Bildirim gönderimi (izin vermeniz halinde)</li>
+                <li>Uygulama performansını iyileştirme</li>
+            </ul>
+        </div>
+
+        <!-- 4. Veri Saklama -->
+        <div class="section">
+            <h2><span class="emoji">🗄️</span> Veri Saklama ve Güvenlik</h2>
+            <p>
+                Verileriniz <strong>Supabase</strong> altyapısında, şifrelenmiş bağlantılar üzerinden 
+                güvenli sunucularda saklanır. Row Level Security (RLS) politikaları sayesinde 
+                her kullanıcı yalnızca kendi verilerine erişebilir.
+            </p>
+            <p style="margin-top: 12px;">
+                Kritik verileriniz (şifre gibi) hash'lenerek saklanır ve hiçbir koşulda düz metin olarak tutulmaz.
+                Üçüncü taraf giriş (Google/Apple) kullanıldığında şifreniz tarafımızda saklanmaz.
+            </p>
+        </div>
+
+        <!-- 5. Üçüncü Taraflar -->
+        <div class="section">
+            <h2><span class="emoji">🤝</span> Üçüncü Taraf Hizmetler</h2>
+            <p>Uygulamamız aşağıdaki üçüncü taraf hizmetleri kullanmaktadır:</p>
+            <ul>
+                <li><strong>Supabase</strong> — Veritabanı ve kimlik doğrulama</li>
+                <li><strong>Google Sign-In</strong> — Hesap girişi</li>
+                <li><strong>Apple Sign-In</strong> — Hesap girişi</li>
+                <li><strong>Google Gemini AI</strong> — Yapay zeka soru üretimi</li>
+                <li><strong>RevenueCat</strong> — Abonelik yönetimi</li>
+                <li><strong>Expo</strong> — Bildirim servisi</li>
+            </ul>
+            <p style="margin-top: 16px;">
+                Bu hizmet sağlayıcılar kendi gizlilik politikalarına tabidir. 
+                Verilerinizi hiçbir durumda reklam amaçlı üçüncü taraflarla paylaşmıyoruz.
+            </p>
+        </div>
+
+        <!-- 6. Çocukların Gizliliği -->
+        <div class="section">
+            <h2><span class="emoji">👶</span> Çocukların Gizliliği</h2>
+            <p>
+                Uygulamamız eğitim amaçlıdır ve 13 yaşın altındaki çocuklardan bilerek kişisel veri toplamaz. 
+                13 yaşın altındaki bir çocuğun veri paylaştığını fark ederseniz, 
+                lütfen bizimle iletişime geçin; ilgili verileri derhal sileceğiz.
+            </p>
+        </div>
+
+        <!-- 7. Kullanıcı Hakları -->
+        <div class="section">
+            <h2><span class="emoji">✊</span> Kullanıcı Hakları</h2>
+            <p>Aşağıdaki haklara sahipsiniz:</p>
+            <ul>
+                <li><strong>Erişim:</strong> Hakkınızda saklanan verileri görebilirsiniz</li>
+                <li><strong>Düzeltme:</strong> Yanlış bilgilerin düzeltilmesini talep edebilirsiniz</li>
+                <li><strong>Silme:</strong> Hesabınızın ve tüm verilerinizin kalıcı olarak silinmesini isteyebilirsiniz</li>
+                <li><strong>Taşınabilirlik:</strong> Verilerinizin bir kopyasını talep edebilirsiniz</li>
+            </ul>
+            <p style="margin-top: 16px;">
+                Bu haklarınızı kullanmak için uygulama içindeki <strong>Ayarlar → Hesap</strong> 
+                bölümünden veya aşağıdaki e-posta adresi üzerinden bizimle iletişime geçebilirsiniz.
+            </p>
+        </div>
+
+        <!-- 8. İzleme ve Çerezler -->
+        <div class="section">
+            <h2><span class="emoji">🍪</span> İzleme ve Çerezler</h2>
+            <p>
+                Nety, iOS'un App Tracking Transparency (ATT) çerçevesine uygundur. 
+                Uygulamayı ilk açtığınızda izleme izni sorulur. İzin vermezseniz hiçbir 
+                izleme verisi toplanmaz. Üçüncü taraf reklam SDK'sı kullanmıyoruz.
+            </p>
+        </div>
+
+        <!-- 9. Değişiklikler -->
+        <div class="section">
+            <h2><span class="emoji">📝</span> Politika Değişiklikleri</h2>
+            <p>
+                Bu gizlilik politikasını zaman zaman güncelleyebiliriz. 
+                Önemli değişiklikler yapıldığında uygulama içi bildirim ile sizi haberdar edeceğiz. 
+                Bu sayfayı düzenli olarak kontrol etmenizi öneririz.
+            </p>
+        </div>
+
+        <!-- 10. İletişim -->
+        <div class="section">
+            <h2><span class="emoji">📧</span> İletişim</h2>
+            <p>
+                Gizlilik politikamız hakkında sorularınız veya talepleriniz için bizimle 
+                iletişime geçebilirsiniz:
+            </p>
+            <ul>
+                <li><strong>E-posta:</strong> privacy@nety.app</li>
+                <li><strong>Uygulama İçi:</strong> Ayarlar → Destek</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Nety. Tüm hakları saklıdır.</p>
+        <p style="margin-top: 8px;">
+            <a href="mailto:privacy@nety.app">privacy@nety.app</a>
+        </p>
+    </footer>
+</body>
+</html>
