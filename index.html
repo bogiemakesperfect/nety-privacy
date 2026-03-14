@@ -1,368 +1,420 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nety — Gizlilik Politikası</title>
+    <title>Nety — YKS Yolculuğunda Yapay Zeka Asistanın</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --bg: #06080F;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border: rgba(148, 163, 184, 0.08);
+            --text-main: #E2E8F0;
+            --text-dim: #94A3B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #06080F;
-            color: #E2E8F0;
-            line-height: 1.7;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* ── Ambient background ── */
-        .bg-glow {
+        /* ── Background Glows ── */
+        .bg-glow-1 {
             position: fixed;
-            top: -30%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
 
         /* ── Header ── */
-        header {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 80px 24px 40px;
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            background: rgba(6, 8, 15, 0.7);
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 32px;
+            text-decoration: none;
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #10B981, #059669);
-            border-radius: 14px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             color: #fff;
-            box-shadow: 0 4px 24px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
         }
 
         .logo-text {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             color: #fff;
             letter-spacing: -0.5px;
         }
 
-        header h1 {
-            font-size: clamp(28px, 5vw, 42px);
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-        }
-
-        header p {
-            color: #94A3B8;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        /* ── Container ── */
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px 100px;
-        }
-
-        /* ── Cards ── */
-        .section {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(148, 163, 184, 0.08);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(20px);
-            transition: border-color 0.3s ease;
-        }
-
-        .section:hover {
-            border-color: rgba(16, 185, 129, 0.15);
-        }
-
-        .section h2 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 16px;
+        .nav-links {
             display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            z-index: 2;
+            padding: 160px 5% 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom, #fff 40%, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section h2 .emoji {
-            font-size: 22px;
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
         }
 
-        .section h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #CBD5E1;
-            margin: 20px 0 8px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #14D393;
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
         }
 
-        .section p,
-        .section li {
-            color: #94A3B8;
-            font-size: 14.5px;
-            line-height: 1.8;
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
-        .section ul {
-            list-style: none;
-            padding-left: 0;
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        .section ul li {
-            padding: 6px 0 6px 24px;
+        /* ── Features ── */
+        .features {
+            padding: 100px 5%;
             position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .section ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 14px;
-            width: 8px;
-            height: 8px;
-            background: #10B981;
-            border-radius: 50%;
-            opacity: 0.6;
+        .section-tag {
+            display: block;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
         }
 
-        /* ── Highlight box ── */
-        .highlight {
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(16, 185, 129, 0.1);
             border-radius: 14px;
-            padding: 20px 24px;
-            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: var(--primary);
         }
 
-        .highlight p {
-            color: #6EE7B7 !important;
-            font-weight: 600;
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .feature-card p {
             font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.6;
         }
 
         /* ── Footer ── */
         footer {
+            padding: 80px 5% 40px;
+            border-top: 1px solid var(--border);
             position: relative;
-            z-index: 1;
+            z-index: 2;
             text-align: center;
-            padding: 40px 24px 60px;
-            border-top: 1px solid rgba(148, 163, 184, 0.06);
         }
 
-        footer p {
+        .footer-logo {
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
             color: #475569;
             font-size: 13px;
-            font-weight: 500;
-        }
-
-        footer a {
-            color: #10B981;
-            text-decoration: none;
-            font-weight: 600;
         }
 
         /* ── Responsive ── */
-        @media (max-width: 640px) {
-            header { padding: 52px 20px 32px; }
-            .container { padding: 0 16px 80px; }
-            .section { padding: 24px 20px; border-radius: 16px; }
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 5%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                padding-top: 120px;
+            }
+            .hero h1 {
+                font-size: 44px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="bg-glow"></div>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
 
-    <header>
-        <div class="logo">
+    <nav>
+        <a href="index.html" class="logo">
             <div class="logo-icon">N</div>
             <span class="logo-text">Nety</span>
+        </a>
+        <div class="nav-links">
+            <a href="#ozellikler">Özellikler</a>
+            <a href="privacy.html">Gizlilik Politikası</a>
+            <a href="terms.html">Kullanım Koşulları</a>
         </div>
-        <h1>Gizlilik Politikası</h1>
-        <p>Son güncelleme: 6 Mart 2026</p>
+        <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Uygulamayı İndir</a>
+    </nav>
+
+    <header class="hero">
+        <h1>YKS Yolculuğunda<br>Yapay Zeka Asistanın</h1>
+        <p>
+            Nety ile YKS hazırlık sürecini kişiselleştir, eksiklerini anında tespit et ve hedefine daha emin adımlarla ilerle. Yapay zeka destekli akıllı çalışma arkadaşınla tanış.
+        </p>
+        <div class="cta-group">
+            <a href="#" class="btn btn-primary">
+                <span>App Store'dan İndir</span>
+            </a>
+            <a href="#" class="btn btn-outline">
+                <span>Google Play'den İndir</span>
+            </a>
+        </div>
     </header>
 
-    <div class="container">
-
-        <!-- 1. Giriş -->
-        <div class="section">
-            <h2><span class="emoji">👋</span> Giriş</h2>
-            <p>
-                Nety ("biz", "uygulama"), öğrencilerin YKS sınavına hazırlanmasına yardımcı olan bir mobil uygulamadır. 
-                Bu gizlilik politikası, uygulamamızı kullanırken kişisel verilerinizin nasıl toplandığını, 
-                kullanıldığını ve korunduğunu açıklar. Gizliliğinize büyük önem veriyoruz.
-            </p>
-        </div>
-
-        <!-- 2. Toplanan Veriler -->
-        <div class="section">
-            <h2><span class="emoji">📋</span> Toplanan Veriler</h2>
+    <section class="features" id="ozellikler">
+        <span class="section-tag">Neler Var?</span>
+        <h2 class="section-title">Başarını Hızlandıracak Özellikler</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Akıllı Çalışma Planı</h3>
+                <p>Hedeflerine ve çalışma tempona göre hazırlanan, yapay zeka tarafından optimize edilen dinamik planlar.</p>
+            </div>
             
-            <h3>Hesap Bilgileri</h3>
-            <ul>
-                <li>Ad ve soyad</li>
-                <li>E-posta adresi (Google veya Apple ile giriş)</li>
-                <li>Profil fotoğrafı (opsiyonel)</li>
-            </ul>
-
-            <h3>Eğitim Bilgileri</h3>
-            <ul>
-                <li>Sınıf düzeyi ve alan bilgisi (SAY/EA/SOZ/DİL)</li>
-                <li>Hedef üniversite ve bölüm</li>
-                <li>Test sonuçları (net, doğru/yanlış sayıları)</li>
-                <li>Çözülen sorular ve hata kayıtları</li>
-            </ul>
-
-            <h3>Cihaz Bilgileri</h3>
-            <ul>
-                <li>Cihaz türü ve işletim sistemi versiyonu</li>
-                <li>Uygulama kullanım istatistikleri</li>
-            </ul>
-
-            <div class="highlight">
-                <p>🔒 Konum bilginizi, rehberinizi, kameranızı veya mikrofonunuzu toplamıyoruz.</p>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Anında Soru Çözümü</h3>
+                <p>Karmaşık soruları anında yapay zekaya sor, detaylı ve anlaşılır çözümlere ulaş.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Zayıf Nokta Analizi</h3>
+                <p>Çözdüğün testlere göre hangi konularda eksiğin olduğunu gör ve nokta atışı çalışmalar yap.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Deneme Sınavları</h3>
+                <p>YKS formatında hazırlanmış, seviyeni ölçen ve gelişimini takip eden akıllı denemeler.</p>
             </div>
         </div>
-
-        <!-- 3. Verilerin Kullanımı -->
-        <div class="section">
-            <h2><span class="emoji">⚙️</span> Verilerin Kullanım Amaçları</h2>
-            <ul>
-                <li>Kişiselleştirilmiş soru önerileri ve yapay zeka destekli soru üretimi</li>
-                <li>Sınav sonuçlarınıza dayalı zayıf alan analizi</li>
-                <li>Liderlik tablosu ve turnuva sıralamaları</li>
-                <li>Bildirim gönderimi (izin vermeniz halinde)</li>
-                <li>Uygulama performansını iyileştirme</li>
-            </ul>
-        </div>
-
-        <!-- 4. Veri Saklama -->
-        <div class="section">
-            <h2><span class="emoji">🗄️</span> Veri Saklama ve Güvenlik</h2>
-            <p>
-                Verileriniz <strong>Supabase</strong> altyapısında, şifrelenmiş bağlantılar üzerinden 
-                güvenli sunucularda saklanır. Row Level Security (RLS) politikaları sayesinde 
-                her kullanıcı yalnızca kendi verilerine erişebilir.
-            </p>
-            <p style="margin-top: 12px;">
-                Kritik verileriniz (şifre gibi) hash'lenerek saklanır ve hiçbir koşulda düz metin olarak tutulmaz.
-                Üçüncü taraf giriş (Google/Apple) kullanıldığında şifreniz tarafımızda saklanmaz.
-            </p>
-        </div>
-
-        <!-- 5. Üçüncü Taraflar -->
-        <div class="section">
-            <h2><span class="emoji">🤝</span> Üçüncü Taraf Hizmetler</h2>
-            <p>Uygulamamız aşağıdaki üçüncü taraf hizmetleri kullanmaktadır:</p>
-            <ul>
-                <li><strong>Supabase</strong> — Veritabanı ve kimlik doğrulama</li>
-                <li><strong>Google Sign-In</strong> — Hesap girişi</li>
-                <li><strong>Apple Sign-In</strong> — Hesap girişi</li>
-                <li><strong>Google Gemini AI</strong> — Yapay zeka soru üretimi</li>
-                <li><strong>RevenueCat</strong> — Abonelik yönetimi</li>
-                <li><strong>Expo</strong> — Bildirim servisi</li>
-            </ul>
-            <p style="margin-top: 16px;">
-                Bu hizmet sağlayıcılar kendi gizlilik politikalarına tabidir. 
-                Verilerinizi hiçbir durumda reklam amaçlı üçüncü taraflarla paylaşmıyoruz.
-            </p>
-        </div>
-
-        <!-- 6. Çocukların Gizliliği -->
-        <div class="section">
-            <h2><span class="emoji">👶</span> Çocukların Gizliliği</h2>
-            <p>
-                Uygulamamız eğitim amaçlıdır ve 13 yaşın altındaki çocuklardan bilerek kişisel veri toplamaz. 
-                13 yaşın altındaki bir çocuğun veri paylaştığını fark ederseniz, 
-                lütfen bizimle iletişime geçin; ilgili verileri derhal sileceğiz.
-            </p>
-        </div>
-
-        <!-- 7. Kullanıcı Hakları -->
-        <div class="section">
-            <h2><span class="emoji">✊</span> Kullanıcı Hakları</h2>
-            <p>Aşağıdaki haklara sahipsiniz:</p>
-            <ul>
-                <li><strong>Erişim:</strong> Hakkınızda saklanan verileri görebilirsiniz</li>
-                <li><strong>Düzeltme:</strong> Yanlış bilgilerin düzeltilmesini talep edebilirsiniz</li>
-                <li><strong>Silme:</strong> Hesabınızın ve tüm verilerinizin kalıcı olarak silinmesini isteyebilirsiniz</li>
-                <li><strong>Taşınabilirlik:</strong> Verilerinizin bir kopyasını talep edebilirsiniz</li>
-            </ul>
-            <p style="margin-top: 16px;">
-                Bu haklarınızı kullanmak için uygulama içindeki <strong>Ayarlar → Hesap</strong> 
-                bölümünden veya aşağıdaki e-posta adresi üzerinden bizimle iletişime geçebilirsiniz.
-            </p>
-        </div>
-
-        <!-- 8. İzleme ve Çerezler -->
-        <div class="section">
-            <h2><span class="emoji">🍪</span> İzleme ve Çerezler</h2>
-            <p>
-                Nety, iOS'un App Tracking Transparency (ATT) çerçevesine uygundur. 
-                Uygulamayı ilk açtığınızda izleme izni sorulur. İzin vermezseniz hiçbir 
-                izleme verisi toplanmaz. Üçüncü taraf reklam SDK'sı kullanmıyoruz.
-            </p>
-        </div>
-
-        <!-- 9. Değişiklikler -->
-        <div class="section">
-            <h2><span class="emoji">📝</span> Politika Değişiklikleri</h2>
-            <p>
-                Bu gizlilik politikasını zaman zaman güncelleyebiliriz. 
-                Önemli değişiklikler yapıldığında uygulama içi bildirim ile sizi haberdar edeceğiz. 
-                Bu sayfayı düzenli olarak kontrol etmenizi öneririz.
-            </p>
-        </div>
-
-        <!-- 10. İletişim -->
-        <div class="section">
-            <h2><span class="emoji">📧</span> İletişim</h2>
-            <p>
-                Gizlilik politikamız hakkında sorularınız veya talepleriniz için bizimle 
-                iletişime geçebilirsiniz:
-            </p>
-            <ul>
-                <li><strong>E-posta:</strong> privacy@nety.app</li>
-                <li><strong>Uygulama İçi:</strong> Ayarlar → Destek</li>
-            </ul>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <p>© 2026 Nety. Tüm hakları saklıdır.</p>
-        <p style="margin-top: 8px;">
-            <a href="mailto:privacy@nety.app">privacy@nety.app</a>
-        </p>
+        <a href="index.html" class="logo footer-logo">
+            <div class="logo-icon">N</div>
+            <span class="logo-text">Nety</span>
+        </a>
+        
+        <div class="footer-links">
+            <a href="#ozellikler">Özellikler</a>
+            <a href="privacy.html">Gizlilik Politikası</a>
+            <a href="terms.html">Kullanım Koşulları</a>
+            <a href="mailto:hello@nety.app">İletişim</a>
+        </div>
+        
+        <p class="copyright">© 2026 Nety. Tüm hakları saklıdır. App Store ve Google Play logoları ilgili sahiplerine aittir.</p>
     </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
