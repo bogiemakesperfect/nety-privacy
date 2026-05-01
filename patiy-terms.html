@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patiy — Kullanım Koşulları</title>
+    <meta name="description" content="Patiy uygulamasının kullanım koşulları. Uygulamamızı kullanırken geçerli olan kural ve sorumlulukları öğrenin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0C0A09;
+            color: #E2E8F0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 24px 40px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #F97316, #EA580C);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 24px rgba(249, 115, 22, 0.3);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(to bottom, #fff 40%, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .subtitle {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .nav-links a {
+            color: #94A3B8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #F97316;
+        }
+
+        .nav-links a.active {
+            color: #F97316;
+            background: rgba(249, 115, 22, 0.08);
+            border-color: rgba(249, 115, 22, 0.15);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        .section {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(20px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(249, 115, 22, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .emoji {
+            font-size: 22px;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #CBD5E1;
+            margin: 20px 0 8px;
+        }
+
+        .section p,
+        .section li {
+            color: #94A3B8;
+            font-size: 14.5px;
+            line-height: 1.8;
+        }
+
+        .section strong {
+            color: #CBD5E1;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: #F97316;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .highlight {
+            background: rgba(249, 115, 22, 0.06);
+            border: 1px solid rgba(249, 115, 22, 0.15);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .highlight p {
+            color: #FDBA74 !important;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.06);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .warning-box p {
+            color: #FCA5A5 !important;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 24px 60px;
+            border-top: 1px solid rgba(148, 163, 184, 0.06);
+        }
+
+        footer p {
+            color: #475569;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        footer a {
+            color: #F97316;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: #FB923C;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #F97316;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 52px 20px 32px;
+            }
+
+            .container {
+                padding: 0 16px 80px;
+            }
+
+            .section {
+                padding: 24px 20px;
+                border-radius: 16px;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <a href="patiy-privacy.html" class="logo">
+            <div class="logo-icon">🐾</div>
+            <span class="logo-text">Patiy</span>
+        </a>
+        <h1>Kullanım Koşulları</h1>
+        <p class="subtitle">Son güncelleme: 1 Mayıs 2026</p>
+
+        <div class="nav-links">
+            <a href="patiy-privacy.html">Gizlilik Politikası</a>
+            <a href="patiy-terms.html" class="active">Kullanım Koşulları</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. Kabul -->
+        <div class="section">
+            <h2><span class="emoji">📝</span> 1. Kabul ve Onay</h2>
+            <p>
+                Patiy mobil uygulamasını ("Uygulama") indirerek, kurarak veya kullanarak bu Kullanım Koşullarını
+                kabul etmiş sayılırsınız. Bu koşulları kabul etmiyorsanız, lütfen Uygulamayı kullanmayın.
+                Patiy, bu koşulları önceden haber vererek güncelleme hakkını saklı tutar.
+            </p>
+        </div>
+
+        <!-- 2. Hizmetin Niteliği -->
+        <div class="section">
+            <h2><span class="emoji">🐾</span> 2. Hizmetin Niteliği</h2>
+            <p>
+                Patiy, evcil hayvan sahiplendirme sürecini kolaylaştırmak amacıyla geliştirilmiş bir platformdur.
+                Uygulama aracılığıyla kullanıcılar sahiplendirme ilanı verebilir, kayıp hayvan ilanı oluşturabilir,
+                barınakları keşfedebilir ve iletişime geçebilir.
+            </p>
+            <div class="highlight">
+                <p>⚠️ Patiy bir aracı platformdur. Sahiplendirme sürecinin sonucu, hayvanın sağlık durumu veya
+                    taraflar arasındaki anlaşmazlıklar konusunda yasal sorumluluk kabul etmez.</p>
+            </div>
+        </div>
+
+        <!-- 3. Kullanıcı Hesapları -->
+        <div class="section">
+            <h2><span class="emoji">👤</span> 3. Kullanıcı Hesapları</h2>
+            <ul>
+                <li>Kayıt oluştururken doğru, güncel ve eksiksiz bilgi vermekle yükümlüsünüz.</li>
+                <li>Hesabınızın güvenliğinden ve hesabınız üzerinden yapılan tüm işlemlerden siz sorumlusunuz.</li>
+                <li>Birden fazla kişinin aynı hesabı kullanması yasaktır.</li>
+                <li>Hesap türünüz (bireysel veya barınak) gerçek durumunuzu yansıtmalıdır.</li>
+                <li>Hesabınızı istediğiniz zaman uygulama içinden kalıcı olarak silebilirsiniz.</li>
+            </ul>
+        </div>
+
+        <!-- 4. İlan Kuralları -->
+        <div class="section">
+            <h2><span class="emoji">📋</span> 4. İlan Kuralları</h2>
+            <p>Patiy'de yayınlanan tüm ilanlar aşağıdaki kurallara uymak zorundadır:</p>
+            <ul>
+                <li>İlanlar yalnızca evcil hayvan sahiplendirme veya kayıp hayvan bildirim amaçlı olmalıdır.</li>
+                <li>Hayvan satışı, takas veya ticari amaçlı ilanlar kesinlikle yasaktır.</li>
+                <li>İlan fotoğrafları ve açıklamaları gerçeği yansıtmalıdır; yanıltıcı bilgi vermek yasaktır.</li>
+                <li>Hayvanların fiziksel veya psikolojik zarar görmesine yol açabilecek içerikler yasaktır.</li>
+                <li>Uygunsuz, müstehcen veya nefret söylemi içeren her türlü içerik yasaktır.</li>
+            </ul>
+            <div class="warning-box">
+                <p>🚫 Hayvan satışı yapıldığı tespit edilen ilanlar derhal kaldırılır ve kullanıcı hesabı
+                    askıya alınabilir.</p>
+            </div>
+        </div>
+
+        <!-- 5. İçerik Moderasyonu ve Şikayet -->
+        <div class="section">
+            <h2><span class="emoji">🛡️</span> 5. İçerik Moderasyonu</h2>
+            <p>
+                Patiy, kullanıcılar tarafından oluşturulan tüm içerikleri denetleme hakkını saklı tutar.
+            </p>
+            <ul>
+                <li>Kullanıcılar, uygunsuz buldukları ilanları veya kullanıcıları şikayet edebilir.</li>
+                <li>Tüm şikayetler ekibimiz tarafından incelenir ve uygun görülen aksiyonlar alınır.</li>
+                <li>Kural ihlali tespit edilen içerikler önceden uyarı yapılmaksızın kaldırılabilir.</li>
+                <li>Tekrarlayan ihlallerde kullanıcı hesabı geçici veya kalıcı olarak askıya alınabilir.</li>
+                <li>Kullanıcılar, istenmeyen kişileri engelleme hakkına sahiptir.</li>
+            </ul>
+        </div>
+
+        <!-- 6. Mesajlaşma -->
+        <div class="section">
+            <h2><span class="emoji">💬</span> 6. Mesajlaşma Kuralları</h2>
+            <p>
+                Uygulama içi mesajlaşma sistemi yalnızca sahiplendirme sürecine ilişkin iletişim amacıyla
+                kullanılmalıdır.
+            </p>
+            <ul>
+                <li>Spam, reklam veya tekrarlayan mesajlar göndermek yasaktır.</li>
+                <li>Taciz, tehdit veya rahatsız edici mesajlar kesinlikle yasaktır.</li>
+                <li>Kişisel bilgi paylaşımı (telefon, adres vb.) kullanıcının kendi sorumluluğundadır.</li>
+                <li>Uygunsuz mesajlar şikayet edilebilir ve ilgili kullanıcılar engellenebilir.</li>
+            </ul>
+        </div>
+
+        <!-- 7. Abonelikler -->
+        <div class="section">
+            <h2><span class="emoji">💎</span> 7. Patiy Pro Abonelik</h2>
+            <p>
+                Patiy, ücretsiz özelliklerin yanı sıra "Patiy Pro" adı altında premium abonelik paketleri sunar:
+            </p>
+            <ul>
+                <li><strong>Ödemeler:</strong> Tüm ödemeler Apple App Store aracılığıyla tahsil edilir.
+                    Ödeme bilgileriniz (kredi kartı vb.) Patiy tarafından saklanmaz.</li>
+                <li><strong>Yenileme:</strong> Abonelikler, mevcut dönemin bitiminden en az 24 saat önce iptal
+                    edilmediği sürece otomatik olarak yenilenir.</li>
+                <li><strong>İptal:</strong> İptal işlemleri cihazınızın App Store ayarlarından yapılmalıdır.
+                    Mevcut dönem sonuna kadar premium erişim devam eder.</li>
+                <li><strong>İade:</strong> İade talepleri Apple'ın iade politikasına tabidir.</li>
+                <li><strong>Geri Yükleme:</strong> Satın alımlarınızı "Satın Alımları Geri Yükle" butonu
+                    ile yeniden aktive edebilirsiniz.</li>
+            </ul>
+        </div>
+
+        <!-- 8. Kayıp İlan -->
+        <div class="section">
+            <h2><span class="emoji">📱</span> 8. Kayıp İlanları ve İletişim Bilgileri</h2>
+            <p>
+                Kayıp hayvan ilanı oluştururken verilen telefon numarası, ilanı gören tüm kullanıcılara
+                açık şekilde gösterilir. Bu bilgiyi paylaşarak bunun farkında olduğunuzu kabul edersiniz.
+            </p>
+            <ul>
+                <li>Telefon numaranızın doğruluğundan siz sorumlusunuz.</li>
+                <li>Başkalarının telefon numarasını izinsiz paylaşmak yasaktır.</li>
+                <li>İlanınızı sildiğinizde telefon numaranız da sistemden kaldırılır.</li>
+            </ul>
+        </div>
+
+        <!-- 9. Fikri Mülkiyet -->
+        <div class="section">
+            <h2><span class="emoji">©️</span> 9. Fikri Mülkiyet Hakları</h2>
+            <p>
+                Patiy uygulamasının yazılımı, tasarımı, logosu, marka adı ve özgün içerikleri Patiy'ye aittir.
+                Bu materyaller önceden yazılı izin alınmaksızın kopyalanamaz, çoğaltılamaz veya ticari amaçla
+                kullanılamaz.
+            </p>
+            <p style="margin-top: 12px;">
+                Kullanıcılar tarafından yüklenen fotoğraf ve içerikler, ilgili kullanıcının mülkiyetinde kalır.
+                Ancak bu içeriklerin uygulama içinde görüntülenmesi için Patiy'ye sınırlı lisans verilmiş sayılır.
+            </p>
+        </div>
+
+        <!-- 10. Sorumluluk Sınırlandırması -->
+        <div class="section">
+            <h2><span class="emoji">⚖️</span> 10. Sorumluluk Sınırlandırması</h2>
+            <p>
+                Patiy bir aracı platform olup aşağıdaki konularda sorumluluk kabul etmez:
+            </p>
+            <ul>
+                <li>Sahiplendirilen hayvanların sağlık durumu veya davranışları</li>
+                <li>Kullanıcılar arasındaki anlaşmazlıklar</li>
+                <li>Kayıp ilanlarında verilen bilgilerin doğruluğu</li>
+                <li>Donanım arızaları, internet kesintileri veya kullanıcı kaynaklı veri kayıpları</li>
+                <li>Üçüncü taraf hizmet sağlayıcılarından kaynaklanan aksaklıklar</li>
+            </ul>
+            <p style="margin-top: 12px;">
+                Uygulama "olduğu gibi" sunulur ve kesintisiz çalışma garantisi verilmez.
+            </p>
+        </div>
+
+        <!-- 11. Hesap Sonlandırma -->
+        <div class="section">
+            <h2><span class="emoji">🚪</span> 11. Hesap Sonlandırma</h2>
+            <ul>
+                <li>Hesabınızı istediğiniz zaman <strong>Profil → Hesabımı Sil</strong> bölümünden
+                    kalıcı olarak silebilirsiniz.</li>
+                <li>Hesap silindiğinde tüm kişisel verileriniz, ilanlarınız, mesajlarınız ve
+                    favorileriniz geri dönülemez şekilde kaldırılır.</li>
+                <li>Patiy, bu koşulları ihlal eden kullanıcıların hesaplarını önceden bildirimde bulunmaksızın
+                    askıya alma veya sonlandırma hakkını saklı tutar.</li>
+            </ul>
+        </div>
+
+        <!-- 12. Uygulanacak Hukuk -->
+        <div class="section">
+            <h2><span class="emoji">🏛️</span> 12. Uygulanacak Hukuk</h2>
+            <p>
+                Bu kullanım koşulları Türkiye Cumhuriyeti yasalarına tabidir.
+                Uyuşmazlık halinde İstanbul mahkemeleri ve icra daireleri yetkilidir.
+            </p>
+        </div>
+
+        <!-- 13. İletişim -->
+        <div class="section">
+            <h2><span class="emoji">📧</span> 13. İletişim</h2>
+            <p>
+                Kullanım koşulları ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:
+            </p>
+            <ul>
+                <li><strong>E-posta:</strong> support@patiy.app</li>
+                <li><strong>Uygulama İçi:</strong> Profil → Destek & Yardım</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Patiy. Tüm hakları saklıdır.</p>
+        <p style="margin-top: 8px;">
+            <a href="mailto:support@patiy.app">support@patiy.app</a>
+        </p>
+        <div class="footer-links">
+            <a href="patiy-privacy.html">Gizlilik Politikası</a>
+            <a href="patiy-terms.html">Kullanım Koşulları</a>
+        </div>
+    </footer>
+</body>
+
+</html>
