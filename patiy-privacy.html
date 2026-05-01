@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patiy — Gizlilik Politikası</title>
+    <meta name="description" content="Patiy uygulamasının gizlilik politikası. Kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu öğrenin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0C0A09;
+            color: #E2E8F0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Ambient background glows ── */
+        .bg-glow {
+            position: fixed;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Header ── */
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 24px 40px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #F97316, #EA580C);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 24px rgba(249, 115, 22, 0.3);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(to bottom, #fff 40%, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .subtitle {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .nav-links a {
+            color: #94A3B8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #F97316;
+        }
+
+        .nav-links a.active {
+            color: #F97316;
+            background: rgba(249, 115, 22, 0.08);
+            border-color: rgba(249, 115, 22, 0.15);
+        }
+
+        /* ── Container ── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        /* ── Cards ── */
+        .section {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(20px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(249, 115, 22, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .emoji {
+            font-size: 22px;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #CBD5E1;
+            margin: 20px 0 8px;
+        }
+
+        .section p,
+        .section li {
+            color: #94A3B8;
+            font-size: 14.5px;
+            line-height: 1.8;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: #F97316;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .section strong {
+            color: #CBD5E1;
+        }
+
+        /* ── Highlight box ── */
+        .highlight {
+            background: rgba(249, 115, 22, 0.06);
+            border: 1px solid rgba(249, 115, 22, 0.15);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .highlight p {
+            color: #FDBA74 !important;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ── Info badge ── */
+        .info-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #FB923C;
+            margin-bottom: 16px;
+        }
+
+        /* ── Table ── */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .data-table th {
+            background: rgba(249, 115, 22, 0.08);
+            color: #FB923C;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        .data-table td {
+            padding: 12px 16px;
+            font-size: 13.5px;
+            color: #94A3B8;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.04);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ── Footer ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 24px 60px;
+            border-top: 1px solid rgba(148, 163, 184, 0.06);
+        }
+
+        footer p {
+            color: #475569;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        footer a {
+            color: #F97316;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: #FB923C;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #F97316;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            header {
+                padding: 52px 20px 32px;
+            }
+
+            .container {
+                padding: 0 16px 80px;
+            }
+
+            .section {
+                padding: 24px 20px;
+                border-radius: 16px;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 12px;
+                font-size: 12.5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">🐾</div>
+            <span class="logo-text">Patiy</span>
+        </a>
+        <h1>Gizlilik Politikası</h1>
+        <p class="subtitle">Son güncelleme: 1 Mayıs 2026</p>
+
+        <div class="nav-links">
+            <a href="patiy-privacy.html" class="active">Gizlilik Politikası</a>
+            <a href="patiy-terms.html">Kullanım Koşulları</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. Giriş -->
+        <div class="section">
+            <h2><span class="emoji">👋</span> Giriş</h2>
+            <p>
+                Patiy ("biz", "uygulama"), evcil hayvan sahiplendirme sürecini kolaylaştıran bir mobil uygulamadır.
+                Bu gizlilik politikası, Patiy'yi kullanırken kişisel verilerinizin nasıl toplandığını,
+                işlendiğini ve korunduğunu açıklamaktadır. Gizliliğinize büyük önem veriyoruz ve
+                6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ile uyumlu şekilde hareket ediyoruz.
+            </p>
+        </div>
+
+        <!-- 2. Toplanan Veriler -->
+        <div class="section">
+            <h2><span class="emoji">📋</span> Toplanan Veriler</h2>
+
+            <h3>Hesap Bilgileri</h3>
+            <ul>
+                <li>Ad ve soyad</li>
+                <li>E-posta adresi (E-posta veya Apple ile giriş)</li>
+                <li>Profil fotoğrafı (isteğe bağlı)</li>
+                <li>Şehir bilgisi (isteğe bağlı)</li>
+                <li>Hesap türü (bireysel veya barınak)</li>
+            </ul>
+
+            <h3>Sahiplendirme Bilgileri</h3>
+            <ul>
+                <li>Yayınlanan hayvan ilanları ve fotoğrafları</li>
+                <li>Sahiplendirme başvuruları ve mesajları</li>
+                <li>Favori ilanlarınız</li>
+                <li>Yaşam tarzı uyumluluk testi yanıtları</li>
+            </ul>
+
+            <h3>Kayıp İlan Bilgileri</h3>
+            <ul>
+                <li>Kayıp hayvan ilanları ve fotoğrafları</li>
+                <li>İletişim telefon numarası (kayıp ilanı verildiğinde)</li>
+                <li>Son görülme konumu ve tarihi</li>
+            </ul>
+
+            <h3>Cihaz Bilgileri</h3>
+            <ul>
+                <li>Cihaz türü ve işletim sistemi</li>
+                <li>Uygulama kullanım istatistikleri</li>
+            </ul>
+
+            <div class="highlight">
+                <p>🔒 Mikrofonunuza erişim istemiyoruz. Konum bilginiz yalnızca harita özelliği için ve yalnızca izninizle kullanılır.</p>
+            </div>
+        </div>
+
+        <!-- 3. Telefon Numarası -->
+        <div class="section">
+            <h2><span class="emoji">📱</span> Telefon Numarası Kullanımı</h2>
+            <p>
+                Kayıp hayvan ilanı oluştururken girilen telefon numarası, kaybolan hayvanın bulunmasına
+                yardımcı olmak amacıyla <strong>diğer kullanıcılara açık şekilde gösterilir</strong>.
+            </p>
+            <div class="highlight">
+                <p>⚠️ Kayıp ilanı verirken telefon numaranızın herkese açık olacağını lütfen unutmayın. İlan detay
+                    sayfasında bu konuda bilgilendirme yapılmaktadır.</p>
+            </div>
+            <p style="margin-top: 12px;">
+                Sahiplendirme ilanlarında telefon numarası toplanmaz; iletişim uygulama içi mesajlaşma
+                sistemi üzerinden sağlanır.
+            </p>
+        </div>
+
+        <!-- 4. Verilerin Kullanımı -->
+        <div class="section">
+            <h2><span class="emoji">⚙️</span> Verilerin Kullanım Amaçları</h2>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Veri</th>
+                        <th>Kullanım Amacı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ad, e-posta</td>
+                        <td>Hesap oluşturma ve kimlik doğrulama</td>
+                    </tr>
+                    <tr>
+                        <td>Şehir</td>
+                        <td>Yakındaki ilanları ve barınakları gösterme</td>
+                    </tr>
+                    <tr>
+                        <td>Yaşam tarzı testi</td>
+                        <td>Hayvan uyumluluk skoru hesaplama</td>
+                    </tr>
+                    <tr>
+                        <td>İlan verileri</td>
+                        <td>Sahiplendirme ve kayıp ilan yönetimi</td>
+                    </tr>
+                    <tr>
+                        <td>Mesajlar</td>
+                        <td>İlan sahipleri ile iletişim</td>
+                    </tr>
+                    <tr>
+                        <td>Konum (izinli)</td>
+                        <td>Haritada yakın barınakları gösterme</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. Veri Saklama -->
+        <div class="section">
+            <h2><span class="emoji">🗄️</span> Veri Saklama ve Güvenlik</h2>
+            <p>
+                Verileriniz <strong>Supabase</strong> altyapısında, şifrelenmiş bağlantılar (SSL/TLS) üzerinden
+                güvenli sunucularda saklanır. Row Level Security (RLS) politikaları sayesinde
+                her kullanıcı yalnızca kendi verilerine erişebilir.
+            </p>
+            <p style="margin-top: 12px;">
+                Şifreleriniz bcrypt ile hash'lenerek saklanır ve düz metin olarak hiçbir zaman tutulmaz.
+                Apple Sign-In kullandığınızda şifreniz tarafımızda saklanmaz.
+            </p>
+        </div>
+
+        <!-- 6. Üçüncü Taraflar -->
+        <div class="section">
+            <h2><span class="emoji">🤝</span> Üçüncü Taraf Hizmetler</h2>
+            <p>Patiy aşağıdaki üçüncü taraf hizmetleri kullanmaktadır:</p>
+            <ul>
+                <li><strong>Supabase</strong> — Veritabanı, kimlik doğrulama ve gerçek zamanlı mesajlaşma</li>
+                <li><strong>Apple Sign-In</strong> — Hesap girişi</li>
+                <li><strong>RevenueCat</strong> — Abonelik ve premium üyelik yönetimi</li>
+                <li><strong>Expo</strong> — Uygulama dağıtım altyapısı</li>
+                <li><strong>Apple MapKit</strong> — Harita ve barınak konumları</li>
+            </ul>
+            <p style="margin-top: 16px;">
+                Bu hizmet sağlayıcılar kendi gizlilik politikalarına tabidir.
+                Verilerinizi hiçbir durumda reklam amaçlı üçüncü taraflarla paylaşmıyoruz.
+            </p>
+        </div>
+
+        <!-- 7. İçerik Moderasyonu -->
+        <div class="section">
+            <h2><span class="emoji">🛡️</span> İçerik Moderasyonu</h2>
+            <p>
+                Patiy, kullanıcı tarafından oluşturulan içerikleri (ilanlar, mesajlar) denetlemek için
+                bir şikayet (report) mekanizması sunmaktadır. Uygunsuz bulunan içerikler
+                kullanıcılar tarafından şikayet edilebilir ve ekibimiz tarafından incelenir.
+            </p>
+            <ul>
+                <li>Şikayet edilen ilanlar ve kullanıcılar inceleme sürecine alınır</li>
+                <li>Uygunsuz içerikler kaldırılır, tekrarlayan ihlallerde hesap askıya alınabilir</li>
+                <li>Kullanıcılar istenmeyen kişileri engelleyebilir</li>
+            </ul>
+        </div>
+
+        <!-- 8. Çocukların Gizliliği -->
+        <div class="section">
+            <h2><span class="emoji">👶</span> Çocukların Gizliliği</h2>
+            <p>
+                Patiy, 13 yaşın altındaki çocuklardan bilerek kişisel veri toplamaz.
+                13 yaşın altındaki bir çocuğun uygulamamızı kullandığını veya veri paylaştığını
+                fark ederseniz, lütfen bizimle iletişime geçin; ilgili verileri derhal sileceğiz.
+            </p>
+        </div>
+
+        <!-- 9. Kullanıcı Hakları -->
+        <div class="section">
+            <h2><span class="emoji">✊</span> Kullanıcı Hakları</h2>
+            <p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p>
+            <ul>
+                <li><strong>Erişim:</strong> Hakkınızda saklanan verileri görüntüleyebilirsiniz</li>
+                <li><strong>Düzeltme:</strong> Yanlış veya eksik bilgilerin güncellenmesini talep edebilirsiniz</li>
+                <li><strong>Silme:</strong> Hesabınızın ve tüm ilişkili verilerinizin kalıcı olarak silinmesini
+                    isteyebilirsiniz</li>
+                <li><strong>İtiraz:</strong> Verilerinizin işlenmesine itiraz edebilirsiniz</li>
+                <li><strong>Taşınabilirlik:</strong> Verilerinizin bir kopyasını talep edebilirsiniz</li>
+            </ul>
+
+            <div class="highlight">
+                <p>🗑️ Hesap silme işlemi uygulama içinden Profil → Hesabımı Sil bölümünden gerçekleştirilebilir.
+                    Silme işlemi tüm kişisel verilerinizi, ilanlarınızı ve mesajlarınızı kalıcı olarak kaldırır.</p>
+            </div>
+        </div>
+
+        <!-- 10. İzleme ve Çerezler -->
+        <div class="section">
+            <h2><span class="emoji">🍪</span> İzleme ve Çerezler</h2>
+            <p>
+                Patiy, kullanıcılarını izlemez ve üçüncü taraf reklam takip SDK'sı kullanmaz.
+                Uygulamada çerez (cookie) kullanılmamaktadır. Cihaz bilgileri yalnızca uygulamanın
+                düzgün çalışmasını sağlamak amacıyla anonim olarak toplanabilir.
+            </p>
+        </div>
+
+        <!-- 11. Abonelik -->
+        <div class="section">
+            <h2><span class="emoji">💎</span> Abonelik ve Ödeme</h2>
+            <p>
+                Patiy Pro aboneliği Apple App Store üzerinden yönetilir. Ödeme bilgileriniz
+                (kredi kartı numarası vb.) tarafımızda saklanmaz; bu bilgiler yalnızca Apple tarafından
+                işlenir. Abonelik yönetimi ve iptali cihazınızın App Store ayarlarından yapılabilir.
+            </p>
+        </div>
+
+        <!-- 12. Değişiklikler -->
+        <div class="section">
+            <h2><span class="emoji">📝</span> Politika Değişiklikleri</h2>
+            <p>
+                Bu gizlilik politikasını zaman zaman güncelleyebiliriz.
+                Önemli değişiklikler yapıldığında uygulama içi bildirim ile sizi haberdar edeceğiz.
+                Bu sayfayı düzenli olarak kontrol etmenizi öneririz.
+            </p>
+        </div>
+
+        <!-- 13. İletişim -->
+        <div class="section">
+            <h2><span class="emoji">📧</span> İletişim</h2>
+            <p>
+                Gizlilik politikamız hakkında sorularınız veya veri talepleriniz için
+                bizimle iletişime geçebilirsiniz:
+            </p>
+            <ul>
+                <li><strong>E-posta:</strong> privacy@patiy.app</li>
+                <li><strong>Uygulama İçi:</strong> Profil → Destek & Yardım</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Patiy. Tüm hakları saklıdır.</p>
+        <p style="margin-top: 8px;">
+            <a href="mailto:privacy@patiy.app">privacy@patiy.app</a>
+        </p>
+        <div class="footer-links">
+            <a href="patiy-privacy.html">Gizlilik Politikası</a>
+            <a href="patiy-terms.html">Kullanım Koşulları</a>
+        </div>
+    </footer>
+</body>
+
+</html>
